@@ -40,31 +40,32 @@ public class ArrayIntersect {
 
   public static int[] sortedArrayIntersection(int[] a, int[] b) {
     recursiveCallsSorted++;
-    return _sortedArrayIntersection(a, b, new int[0], 0);
+    return _sortedArrayIntersection(a, b, new int[0], 0, 0);
   }
 
-  private static int[] _sortedArrayIntersection(int[] a, int[] b, int[] result, int state){
+  private static int[] _sortedArrayIntersection(int[] a, int[] b, int[] result, int lastBIndex, int state){
      if(state >= a.length){
          return result;
      }
-     if(findInSortedArray(a[state], b)){
+     int foundAt = findInSortedArray(a[state], b, lastBIndex);
+     if(foundAt >= 0){
          result = Arrays.copyOf(result, result.length + 1);
          result[result.length - 1] = a[state];
      }
      recursiveCallsSorted++;
-     return _sortedArrayIntersection(a,b,result, state + 1);
+     return _sortedArrayIntersection(a,b,result,foundAt >= 0 ? foundAt : lastBIndex, state + 1);
   }
 
-  private static boolean findInSortedArray(int needle, int[] haystack){
+  private static int findInSortedArray(int needle, int[] haystack, int lastIndex){
       recursiveCallsSorted++;
-      return _findInSortedArray(needle, haystack, 0);
+      return _findInSortedArray(needle, haystack, lastIndex);
   }
-  private static boolean _findInSortedArray(int needle, int[] haystack, int state){
+  private static int _findInSortedArray(int needle, int[] haystack, int state){
       if(haystack[state] > needle){
-          return false;
+          return -1;
       } else {
           if(haystack[state] == needle){
-              return true;
+              return state;
           } else {
               recursiveCallsSorted++;
               return _findInSortedArray(needle, haystack, state + 1);
