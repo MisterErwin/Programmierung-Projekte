@@ -1,7 +1,13 @@
 public class LevyC {
 
   static void levyCKurve(Canvas c, int ordnung, int length) {
-    //TODO
+      if(ordnung > 0){
+          levyCKurve(c, ordnung - 1, length);
+          c.rotate(90 - 90 * (ordnung - 1));
+          levyCKurve(c, ordnung - 1, length);
+      } else {
+          c.drawForward(length);
+      }
   }
 
   public static void main(String[] args) {
