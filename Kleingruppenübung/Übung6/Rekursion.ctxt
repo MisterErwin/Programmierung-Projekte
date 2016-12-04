@@ -1,0 +1,13 @@
+#BlueJ class context
+comment0.params=a
+comment0.target=int\ arraySum(int[])
+comment0.text=\ \r\n\ Iteratives\ Summieren\ eines\ Arrays\ \r\n\ \ @param\ an\ integer\ array\ to\ be\ summed\ up\r\n\ \ @return\ sum\ of\ integers\ in\ array\r\n
+comment1.params=a
+comment1.target=int\ arraySumRecursive(int[])
+comment1.text=\r\n\ Recursive\ sumamation\ of\ an\ integer\ array\r\n\ @param\ an\ integer\ array\ to\ be\ summed\ up\r\n\ @return\ sum\ of\ integers\ in\ array\r\n
+comment2.params=a\ i
+comment2.target=int\ arraySumHelp(int[],\ int)
+comment2.text=\r\n\ Helper\ method\ for\ recursive\ summation\r\n\ @param\ an\ integer\ array\r\n\ @param\ current\ state\r\n\ @return\ current\ sum\ of\ integers\ from\ i\ to\ end\ of\ sequence\r\n
+comment3.params=a
+comment3.target=int\ alternativeArraySum(int[])
+numComments=4

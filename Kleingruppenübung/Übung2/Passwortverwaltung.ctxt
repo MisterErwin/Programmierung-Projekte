@@ -1,0 +1,7 @@
+#BlueJ class context
+comment0.params=args
+comment0.target=void\ main(java.lang.String[])
+comment1.params=
+comment1.target=void\ welcome()
+comment1.text=\r\n\ welcome\ service\ -\ prints\ the\ possible\ operations\ for\ the\ user\ to\ choose\ \r\n
+numComments=2

@@ -1,0 +1,8 @@
+#BlueJ class context
+comment0.params=s\ ordnung
+comment0.target=void\ kurveR(Canvas,\ int)
+comment1.params=s\ ordnung
+comment1.target=void\ kurveL(Canvas,\ int)
+comment2.params=args
+comment2.target=void\ main(java.lang.String[])
+numComments=3

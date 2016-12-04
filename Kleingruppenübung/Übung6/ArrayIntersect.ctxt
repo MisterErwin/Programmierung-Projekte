@@ -1,0 +1,18 @@
+#BlueJ class context
+comment0.params=a\ b
+comment0.target=int[]\ arrayIntersection(int[],\ int[])
+comment1.params=a\ b\ result\ state
+comment1.target=int[]\ _arrayIntersection(int[],\ int[],\ int[],\ int)
+comment2.params=needle\ haystack
+comment2.target=boolean\ findInArray(int,\ int[])
+comment3.params=needle\ haystack\ state
+comment3.target=boolean\ _findInArray(int,\ int[],\ int)
+comment4.params=a\ b
+comment4.target=int[]\ sortedArrayIntersection(int[],\ int[])
+comment5.params=a\ b\ result\ state
+comment5.target=int[]\ _sortedArrayIntersection(int[],\ int[],\ int[],\ int)
+comment6.params=needle\ haystack
+comment6.target=boolean\ findInSortedArray(int,\ int[])
+comment7.params=needle\ haystack\ state
+comment7.target=boolean\ _findInSortedArray(int,\ int[],\ int)
+numComments=8

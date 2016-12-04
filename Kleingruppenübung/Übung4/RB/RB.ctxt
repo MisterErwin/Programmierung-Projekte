@@ -1,0 +1,21 @@
+#BlueJ class context
+comment0.params=
+comment0.target=RB()
+comment0.text=most\ rudimental\ constructor\ for\ RB.\ All\ initial\ variables\ are\ set\ without\ any\ parameters\ given\ *
+comment1.params=program\ kommandos
+comment1.target=RB(java.lang.String[],\ int)
+comment1.text=most\ complex\ constructor\ for\ RB.\ Program\ and\ maximum\ of\ commands\ can\ be\ set\ by\ calling\ this\ constructor\ *
+comment2.params=kommandos
+comment2.target=RB(int)
+comment2.text=more\ complex\ constructor\ for\ RB.\ Program\ can\ be\ set\ by\ calling\ this\ constructor\ *
+comment3.params=programm
+comment3.target=int\ programmHochladen(java.lang.String[])
+comment3.text=\r\n\ prgrammHochladen\r\n\ @param\ String[]\ \:\ a\ String\ array\ of\ program\ lines\r\n\ @return\ int\ \:\ the\ number\ of\ true\ RB\ commands\ found\ in\ the\ given\ program,\ necessary\ greater\ or\ equal\ to\ 0\r\n\ if\ return\ is\ smaller\ than\ 0,\ the\ function\ found\ an\ error\ in\ the\ program\ given.\r\n
+comment4.params=
+comment4.target=java.lang.String\ schritt()
+comment4.text=\r\n\ Worker\ service\ for\ RB\ to\ complete\ a\ level\r\n\ @return\ String\ \:\ current\ true\ RB\ command\ or\ 'end'\ command\r\n
+comment5.params=kommandos
+comment5.target=void\ anzahlKommandos(int)
+comment6.params=
+comment6.target=RB.Command\ currentCommand()
+numComments=7
