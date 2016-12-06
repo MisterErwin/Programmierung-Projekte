@@ -116,7 +116,7 @@ public class TreeNode {
    * Geordnete Liste aller Zahlen, die in diesem Teilbaum gespeichert sind.
    */
   public String toString() {
-    return (this.left != null ? this.left.toString() : "") + "," + this.value + "," + (this.right != null ? this.right.toString() : "");
+    return (this.left != null ? this.left.toString() + ","  : "") + this.value + (this.right != null ? "," + this.right.toString() : "");
   }
 
   /**
