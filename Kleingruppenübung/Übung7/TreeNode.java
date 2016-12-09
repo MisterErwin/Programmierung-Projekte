@@ -69,6 +69,13 @@ public class TreeNode {
     return this.right;
   }
 
+  public void setRight(TreeNode right) {
+    this.right = right;
+  }
+  public void setLeft(TreeNode left) {
+    this.left = left;
+  }
+
   /**
    * Sucht in diesem Teilbaum nach x, ohne den Baum zu veraendern.
    * @return true, falls x enthalten ist, sonst false
@@ -80,7 +87,7 @@ public class TreeNode {
       if(this.value < x && this.right != null)
         return this.right.simpleSearch(x);
       else if(this.value > x && this.left != null)
-        return this.right.simpleSearch(x);
+        return this.left.simpleSearch(x);
       else
         return false;
   }
@@ -107,18 +114,42 @@ public class TreeNode {
    * @return die neue Wurzel des Teilbaums
    */
   public TreeNode rotationSearch(int x) {
-    //TODO d)
-    return null;
-    //Ende TODO
+    if(this.value == x){
+      return this;
+    } else {
+      if(this.value < x){
+        // im rechten Teilbaum
+        if(this.right != null){
+          TreeNode rChild = this.right;
+          this.right = (rChild.hasLeft() ? rChild.getLeft() : null);
+          rChild.setLeft(this);
+          
+          return rChild;
+        } else
+          return null;
+      } else {
+        // im rechten Teilbaum
+        if(this.left != null){
+          TreeNode lChild = this.left;
+          this.left = (lChild.hasRight() ? lChild.getRight() : null);
+          lChild.setRight(this);
+          
+          return lChild;
+        } else
+          return null;
+      }
+    }
   }
 
   /**
    * Geordnete Liste aller Zahlen, die in diesem Teilbaum gespeichert sind.
    */
   public String toString() {
-    return (this.left != null ? this.left.toString() + ","  : "") + this.value + (this.right != null ? "," + this.right.toString() : "");
+    return (this.left != null ? this.left.toString() + ", "  : "") + this.value + (this.right != null ? ", " + this.right.toString() : "");
   }
 
+  
+  
   /**
    * Erzeugt eine dot Repraesentation in str
    */

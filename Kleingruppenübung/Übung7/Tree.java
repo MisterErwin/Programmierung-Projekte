@@ -26,6 +26,20 @@ public class Tree {
       this.insert(x);
     }
   }
+  
+  public Tree(boolean special){
+    Random prng = new Random();
+
+    int nodeCount = prng.nextInt(10) + 5;
+    for(int i = 0; i < nodeCount; ++i) {
+      this.insert(prng.nextInt(30));
+    }
+    if(this.writeToFile("tree.dot")) {
+      System.out.println("Baum als DOT File ausgegeben in Datei " + "tree.dot");
+    } else {
+      System.out.println("Keine Ausgabe des Baums in Datei, zu wenige Aufrufparameter.");
+    }
+  }
 
   /**
    * Test ob der Baum leer ist
@@ -63,9 +77,18 @@ public class Tree {
    * @return true, falls x im Baum enthalten ist, sonst false
    */
   public boolean search(int x) {
-    //TODO d)
-    return false;
-    //Ende TODO
+    if(!this.isEmpty()){
+      TreeNode root = this.root.rotationSearch(x);
+      if(root != null){
+        this.root = root;
+        if(this.root.getValue() == x)
+            return true;
+        else
+            return this.search(x);
+      } else
+        return false;
+    } else
+      return false;
   }
 
   /**
@@ -73,7 +96,7 @@ public class Tree {
    */
   public String toString() {
     if(!this.isEmpty())
-      return root.toString();
+      return "tree[" + root.toString() + "]";
     else
       return "";
   }
@@ -167,6 +190,5 @@ public class Tree {
     }
 
   }
-
 
 }
