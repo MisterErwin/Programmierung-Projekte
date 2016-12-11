@@ -1,0 +1,22 @@
+digraph {
+graph [ordering="out"];
+null0[shape=point]
+0 -> null0;
+0 -> 7;
+7 -> 4;
+null1[shape=point]
+4 -> null1;
+null2[shape=point]
+4 -> null2;
+7 -> 22;
+null3[shape=point]
+22 -> null3;
+22 -> 23;
+null4[shape=point]
+23 -> null4;
+23 -> 27;
+null5[shape=point]
+27 -> null5;
+null6[shape=point]
+27 -> null6;
+}
