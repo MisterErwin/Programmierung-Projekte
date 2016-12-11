@@ -9,6 +9,8 @@
  * zu suchen, einzufuegen und zu loeschen. Diese gibt
  * es jeweils noch in optimierten Varianten, um
  * rotate-to-root Baeume zu verwalten.
+ *
+ * uh huh. Da hat jemand das loeschen vergessen?
  */
 public class TreeNode {
   /**
@@ -69,91 +71,86 @@ public class TreeNode {
     return this.right;
   }
 
-  public void setRight(TreeNode right) {
-    this.right = right;
-  }
-  public void setLeft(TreeNode left) {
-    this.left = left;
-  }
-
   /**
    * Sucht in diesem Teilbaum nach x, ohne den Baum zu veraendern.
    * @return true, falls x enthalten ist, sonst false
    */
   public boolean simpleSearch(int x) {
-    if(this.value == x)
-      return true;
-    else
-      if(this.value < x && this.right != null)
-        return this.right.simpleSearch(x);
-      else if(this.value > x && this.left != null)
-        return this.left.simpleSearch(x);
-      else
-        return false;
+    if (this.value == x) return true; //Falls value x ist, wurde x gefunden
+    if (x < this.value) { //Falls x links zu suchen ist
+      return left == null ? false : left.simpleSearch(x); //true, wenn links ein Teilbaum ist und der linke Teilbaum x enthaelt
+    } else //Falls x rechts zu suchen ist
+      return right == null ? false : right.simpleSearch(x);//true, wenn rechts ein Teilbaum ist und der rechte Teilbaum x enthaelt
   }
 
   /**
    * Fuegt x in diesen Teilbaum ein.
    */
   public void insert(int x) {
-    if(this.value < x && this.right == null)
-      this.right = new TreeNode(x);
-    else if(this.value > x && this.left == null)
-      this.left = new TreeNode(x);
-    else
-     if(this.value < x)
-       this.right.insert(x);
-     else if(this.value > x)
-       this.left.insert(x);
+    //Eigentlich unnoetige Rekursion, da fuer jeden Knoten aufgerufen
+    //Es wuerde reichen zu schauen, ob this.value == x ist, da insert und simpleSearch (fast) gleich den Baum durchlaufen
+    //Da aber die Aufgabe "In der Klasse <b>TreeNode</b> wird zunaechst nach der einzufuegenden Zahl gesucht" lautet,
+    //wird dieser Weg hier benutzt
+    if (this.simpleSearch(x))return;
+
+    if (x < this.value){ //Ist x auf der linken Seite (< this.value) anzutreffen
+      if (left==null) //Falls links nichts ist, x hinzufuegen
+        left = new TreeNode(x);
+      else left.insert(x); //x im linken Teilbaum einfuegen
+    }else { //Ist x auf der rechten Seite (> this.value) anzutreffen
+      if (right==null)//Falls rechts  nichts ist, x hinzufuegen
+          right = new TreeNode(x);
+      else right.insert(x); //x im rechten Teilbaum einfuegen
+    }
   }
 
   /**
    * Sucht in diesem Teilbaum nach x und rotiert den Endpunkt der Suche in die
    * Wurzel.
    * @param x der gesuchte Wert
-   * @return die neue Wurzel des Teilbaums
+   * @return die neue Wurzel des Teilbaums oder null
    */
   public TreeNode rotationSearch(int x) {
-    if(this.value == x){
-      return this;
+    if (this.value == x) return this; //Dieser Knoten ist der gesuchte Knoten. Diesen Teilbaum (this) zurueckgeben
+    if (this.left != null && x < this.value) { //Links ist noch ein Teilbaum und der ges. Teilbaum ist links
+      TreeNode newRoot = this.left.rotationSearch(x); //Im linken Teilbaum nach x suchen und rotieren
+      if (newRoot == null) return null; //Nicht gefunden => null zureckgeben
+      //newroot mit this rotieren
+      this.left = newRoot.right;
+      newRoot.right = this;
+      return newRoot;
+    } else if (this.right != null && x > this.value) {//Rechts ist noch ein Teilbaum und der ges. Teilbaum ist rechts
+      TreeNode newRoot = this.right.rotationSearch(x); //Im rechten Teilbaum nach x suchen und rotieren
+      if (newRoot == null) return null; //Nicht gefunden => null zureckgeben
+      //newroot mit this rotieren
+      this.right = newRoot.left;
+      newRoot.left = this;
+      return newRoot;
     } else {
-      if(this.value < x){
-        // im rechten Teilbaum
-        if(this.right != null){
-          TreeNode rChild = this.right;
-          this.right = (rChild.hasLeft() ? rChild.getLeft() : null);
-          rChild.setLeft(this);
-          
-          return rChild;
-        } else
-          return null;
-      } else {
-        // im rechten Teilbaum
-        if(this.left != null){
-          TreeNode lChild = this.left;
-          this.left = (lChild.hasRight() ? lChild.getRight() : null);
-          lChild.setRight(this);
-          
-          return lChild;
-        } else
-          return null;
-      }
+      //Nichts gefunden => null zurueck geben
+      return null;
     }
   }
 
   /**
    * Geordnete Liste aller Zahlen, die in diesem Teilbaum gespeichert sind.
    */
+  @Override
   public String toString() {
-    return (this.left != null ? this.left.toString() + ", "  : "") + this.value + (this.right != null ? ", " + this.right.toString() : "");
+    //Falls links ein Teilbaum ist, mit dem und ", " Anfangen. Ansonsten ein leerer String
+    String ret = left==null?"":left.toString() + ", ";
+    ret += this.value; //Diesen Wert hinzufuegen
+    if (right != null) //Falls rechts noch ein Teilbaum ist
+      ret += ", " + right.toString(); //Den rechten Teilbaum plus ", " anhaengen
+    return ret; //Den String zurueckgeben
   }
 
-  
-  
   /**
    * Erzeugt eine dot Repraesentation in str
    */
   public int toDot(StringBuilder str, int nullNodes) {
+    //Wieso wird hier String concatenation bei den Paremetern fuer StringBuilder#append angewendet?
+    //Das macht den Einsatz eines StringBuilder irgendwie sinnlos
     if(this.hasLeft()) {
       str.append(this.getValueString() + " -> " + this.left.getValueString() + ";"
         + System.lineSeparator());

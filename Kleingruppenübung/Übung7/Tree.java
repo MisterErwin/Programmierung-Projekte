@@ -26,20 +26,6 @@ public class Tree {
       this.insert(x);
     }
   }
-  
-  public Tree(boolean special){
-    Random prng = new Random();
-
-    int nodeCount = prng.nextInt(10) + 5;
-    for(int i = 0; i < nodeCount; ++i) {
-      this.insert(prng.nextInt(30));
-    }
-    if(this.writeToFile("tree.dot")) {
-      System.out.println("Baum als DOT File ausgegeben in Datei " + "tree.dot");
-    } else {
-      System.out.println("Keine Ausgabe des Baums in Datei, zu wenige Aufrufparameter.");
-    }
-  }
 
   /**
    * Test ob der Baum leer ist
@@ -55,10 +41,13 @@ public class Tree {
    * @param x einzufuegende Zahl
    */
   public void insert(int x) {
-    if(this.isEmpty())
-      root = new TreeNode(x);
-    else
-      root.insert(x);
+    if (this.root==null){
+      this.root = new TreeNode(x);
+    }else{
+      this.root.insert(x);
+    }
+
+    //TODO b)
   }
 
   /**
@@ -66,10 +55,10 @@ public class Tree {
    * @return true, falls x im Baum enthalten ist, sonst false
    */
   public boolean simpleSearch(int x) {
-    if(!this.isEmpty())
-      return this.root.simpleSearch(x);
-    else
-      return false;
+    if (this.root == null)return false;
+    //TODO a)
+    return this.root.simpleSearch(x);
+    //Ende TODO
   }
 
   /**
@@ -77,28 +66,24 @@ public class Tree {
    * @return true, falls x im Baum enthalten ist, sonst false
    */
   public boolean search(int x) {
-    if(!this.isEmpty()){
-      TreeNode root = this.root.rotationSearch(x);
-      if(root != null){
-        this.root = root;
-        if(this.root.getValue() == x)
-            return true;
-        else
-            return this.search(x);
-      } else
-        return false;
-    } else
-      return false;
+    //TODO d)
+    if (this.root == null)return false;
+    TreeNode r = this.root.rotationSearch(x);
+    if (r==null)return false;
+    this.root = r;
+    return true;
+//    return this.root.rotationSearch(x) != null;
+    //Ende TODO
   }
 
   /**
    * Sortierte Ausgabe aller Elemente.
    */
   public String toString() {
-    if(!this.isEmpty())
-      return "tree[" + root.toString() + "]";
-    else
-      return "";
+    //TODO c)
+    return "[" + (root==null?"":root.toString()) + "]";
+    //return "Tree.toString() nicht implementiert!";
+    //Ende TODO
   }
 
   /**
@@ -121,7 +106,7 @@ public class Tree {
    *
    * @param path Pfad unter dem gespeichert werden soll (Dateiname)
    * @return true, falls erfolgreich gespeichert wurde, sonst false
-   * @see toDot
+   * @see Tree#toDot()
    */
   public boolean writeToFile(String path) {
     boolean retval = true;
@@ -143,7 +128,7 @@ public class Tree {
    */
   public static void main(String[] args) {
     Random prng = new Random();
-
+    
     int nodeCount = prng.nextInt(10) + 5;
     Tree myTree = new Tree();
     System.out.println("Aufgabe b): Zufaelliges Einfuegen");
@@ -175,7 +160,7 @@ public class Tree {
 
     System.out.println("Aufgabe c): geordnete String-Ausgabe");
     System.out.println(myTree.toString());
-
+    
     System.out.println("Aufgabe d): Suchen nach vorhandenen Elementen mit Rotation.");
     myTree.search(3);
     myTree.search(23);
@@ -190,5 +175,6 @@ public class Tree {
     }
 
   }
+
 
 }
