@@ -1,0 +1,8 @@
+#BlueJ class context
+comment0.params=i
+comment0.target=int\ zahl(int)
+comment0.text=\r\n\ Gibt\ eine\ zufaellige\ Zahl\ zwischen\ {@code\ 0}\ und\ {@code\ i\ -\ 1}\ zurueck.\r\n\ \r\n\ @param\ i\r\n\ \ \ \ \ \ \ \ \ \ \ \ Die\ Obergrenze\ (nicht\ eingeschlossen).\r\n\ @return\ Die\ Zufallszahl.\r\n
+comment1.params=
+comment1.target=java.lang.String\ name()
+comment1.text=\r\n\ Gibt\ einen\ zufaelligen\ Vornamen\ zurueck,\ der\ in\ den\ 90ern\ beliebt\ war.\r\n\ \r\n\ @return\ Der\ Vorname.\r\n
+numComments=2

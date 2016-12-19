@@ -1,0 +1,10 @@
+#BlueJ class context
+comment0.params=dir
+comment0.target=VCS(java.lang.String)
+comment1.params=
+comment1.target=java.lang.String\ getBackupDir()
+comment1.text=\r\n\ @return\ the\ backup\ directory\ of\ the\ version\ control\ system\r\n
+comment2.params=
+comment2.target=java.lang.String\ getRootDir()
+comment2.text=\r\n\ @return\ the\ root\ directory\ of\ the\ version\ control\ system\r\n
+numComments=3

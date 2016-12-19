@@ -1,0 +1,10 @@
+#BlueJ class context
+comment0.params=vcs
+comment0.target=Command(VCS)
+comment1.params=
+comment1.target=void\ execute()
+comment2.params=
+comment2.target=VCS\ getVCS()
+comment3.params=cmdName\ vcs
+comment3.target=Command\ parse(java.lang.String,\ VCS)
+numComments=4
