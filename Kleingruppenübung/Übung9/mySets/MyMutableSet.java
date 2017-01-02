@@ -15,8 +15,8 @@ public class MyMutableSet<T> extends MyAbstractSet<T> implements Set<T> {
     }
 
     /**
-     * Adds the specified element to this set if it is not already present
-     * (optional operation).  More formally, adds the specified element
+     * Adds the specified element to this set if it is not already present.
+     * More formally, adds the specified element
      * <tt>e</tt> to this set if the set contains no element <tt>e2</tt>
      * such that
      * <tt>(e==null&nbsp;?&nbsp;e2==null&nbsp;:&nbsp;e.equals(e2))</tt>.
@@ -30,8 +30,6 @@ public class MyMutableSet<T> extends MyAbstractSet<T> implements Set<T> {
      * @param o element to be added to this set
      * @return <tt>true</tt> if this set did not already contain the specified
      * element
-     * @throws NullPointerException if the specified element is null and this
-     *                              set does not permit null elements
      */
     @Override
     public boolean add(T o) {
@@ -56,8 +54,8 @@ public class MyMutableSet<T> extends MyAbstractSet<T> implements Set<T> {
 
 
     /**
-     * Removes the specified element from this set if it is present
-     * (optional operation).  More formally, removes an element <tt>e</tt>
+     * Removes the specified element from this set if it is present.
+     * More formally, removes an element <tt>e</tt>
      * such that
      * <tt>(o==null&nbsp;?&nbsp;e==null&nbsp;:&nbsp;o.equals(e))</tt>, if
      * this set contains such an element.  Returns <tt>true</tt> if this set
@@ -94,7 +92,7 @@ public class MyMutableSet<T> extends MyAbstractSet<T> implements Set<T> {
 
     /**
      * Adds all of the elements in the specified collection to this set if
-     * they're not already present (optional operation).  If the specified
+     * they're not already present.  If the specified
      * collection is also a set, the <tt>addAll</tt> operation effectively
      * modifies this set so that its value is the <i>union</i> of the two
      * sets.  The behavior of this operation is undefined if the specified
@@ -105,7 +103,6 @@ public class MyMutableSet<T> extends MyAbstractSet<T> implements Set<T> {
      * @throws NullPointerException if the specified collection is null
      * @see #add(Object)
      */
-
     @Override
     public boolean addAll(Collection<? extends T> c) {
         boolean modified = false;
@@ -115,6 +112,9 @@ public class MyMutableSet<T> extends MyAbstractSet<T> implements Set<T> {
         return modified;
     }
 
+    /**
+     * @throws UnsupportedOperationException not implemented/required
+     */
     @Override
     public boolean retainAll(Collection c) {
         throw new UnsupportedOperationException("retainAll");
@@ -122,14 +122,14 @@ public class MyMutableSet<T> extends MyAbstractSet<T> implements Set<T> {
 
     /**
      * Removes from this set all of its elements that are contained in the
-     * specified collection (optional operation).  If the specified
+     * specified collection.  If the specified
      * collection is also a set, this operation effectively modifies this
      * set so that its value is the <i>asymmetric set difference</i> of
      * the two sets.
      *
      * @param c collection containing elements to be removed from this set
      * @return <tt>true</tt> if this set changed as a result of the call
-     * @throws NullPointerException i  if the specified collection is null
+     * @throws NullPointerException if the specified collection is null
      * @see #remove(Object)
      * @see #contains(Object)
      */
@@ -143,7 +143,7 @@ public class MyMutableSet<T> extends MyAbstractSet<T> implements Set<T> {
     }
 
     /**
-     * Removes all of the elements from this set (optional operation).
+     * Removes all of the elements from this set.
      * The set will be empty after this call returns.
      */
     @Override
