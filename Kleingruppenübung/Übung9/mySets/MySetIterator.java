@@ -25,7 +25,7 @@ class MySetIterator<T> implements Iterator<T> {
      */
     @Override
     public boolean hasNext() {
-        return this.current!=null&& this.current.next != null;
+        return this.current != null;
     }
 
     /**
