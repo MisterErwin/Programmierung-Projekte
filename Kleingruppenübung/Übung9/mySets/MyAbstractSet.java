@@ -72,6 +72,7 @@ abstract class MyAbstractSet<T> implements Iterable<T> {
 
     /**
      * @throws UnsupportedOperationException not implemented
+     * @return not implemented
      */
     public T[] toArray() {
         throw new UnsupportedOperationException("toArray");
@@ -79,6 +80,8 @@ abstract class MyAbstractSet<T> implements Iterable<T> {
 
     /**
      * @throws UnsupportedOperationException not implemented
+     * @param a not implemented
+     * @return not implemented
      */
     public <T1> T1[] toArray(T1[] a) {
         throw new UnsupportedOperationException("toArray");
