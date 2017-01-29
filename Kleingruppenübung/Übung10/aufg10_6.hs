@@ -1,22 +1,31 @@
+-- a)
 isEven :: Int -> Bool
 isEven 0 = True
 isEven 1 = False
 isEven x = isEven (x-2)
 
+-- b)
 arithSeries :: Int -> Int -> Int
-arithSeries x d = arithI x d 0 
-    where arithI :: Int->Int->Int->Int
-          arithI xx dd i = if i*dd >= xx then 0 else xx-i*dd + arithI xx dd (i+1)
+arithSeries x d | x > 0     = x + arithSeries (x - d) d
+                | otherwise = 0
 
-
+-- c)
+-- Checks if a list is sorted
 isSorted :: [Int] -> Bool
-isSorted []         = True
-isSorted [x]        = True
-isSorted (x : y : xs) = if x <= y then isSorted (y:xs) else False 
+isSorted []     = True
+isSorted (x:[]) = True
+isSorted (x:xs) | x <= next(xs) = isSorted(xs)
+                | otherwise     = False
+-- Helper function for isSorted
+next :: [Int] -> Int
+next (x:xs) = x
 
+-- d)
 interval :: Int -> Int -> [Int]
-interval a b = if a == b then [a] else a : interval (a+1) b
+interval a b | a /= b     = (a:interval (a+1) b)
+             | otherwise  = [a]
 
+-- e)
 --Das ganze liesse sich verbessern, wenn man Teillisten wegwerfen wuerde
 --Das 3. Elem von [100,99,98] kostet im Moment viel... sehr viel..
 --Vom letzten Elem. von Listen mit seehr großen Werten rede ich mal nicht
